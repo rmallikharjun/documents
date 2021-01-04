@@ -1,0 +1,114 @@
+npm config set proxy http://Mallikharjuna.Rudrakshula@dfs.com:GooddaY$@apac-nat-zscaler.proxy.lvmh:9480
+npm config set https-proxy http://Mallikharjuna.Rudrakshula@dfs.com:GooddaY$@apac-nat-zscaler.proxy.lvmh:9480
+npm config set http-proxy http://Mallikharjuna.Rudrakshula@dfs.com:GooddaY$@apac-nat-zscaler.proxy.lvmh:9480
+
+pushd
+
+
+server name: WSINSTORDAP801.dfspos.com
+?username:dfspos\tpuser
+pwd:DFS@2020#
+
+
+localhost:3000/repair-alteration/auth/signin?sId=6301&dId=63&pId=FRASRVT1001&pos=true%0d
+
+app-key -> SD7ZKOpXpYzByJZPJOtCtMz9ekhVyQOM
+
+
+server - 10.242.1.19
+
+db - 10.242.1.20
+6SxOiT1C8N
+
+prod
+10.242.2.33
+
+
+
+10.176.95.140
+
+mac 68
+gal
+578
+
+
+
+start time - 4th 09
+4th 09 30
+
+
+v_ktejaswi
+Welcome123
+
+V_RMallikharjuna
+U1VaQwaFBi
+
+C_RRajashree
+rs1995@09
+'username' => cms_admin
+'password' => 7xejAIyGyarD
+'host' => XSINCMSPDB8S01.dfs.com
+
+
+http://x-sin-edp-p-app-8-s01.dfs:8080/datahub-services/ea-product/v1.0?startTime=2020-11-26T00:00:00&endTime=2020-11-27T23:59:59&divisionId=68&retailStoreId=578
+
+wget --no-check-certificate http://XSINCMSQAP8S01.dfs.com/api/v1/mac/gal/syncproducts?$(date +)
+https://xsincmspap8s01.dfs.com/
+
+su - root
+9sAN8cIO
+
+https://10.242.2.33/api/v1/mac/gal/store-feeddata?time=1607595852&showCount=true
+
+$offerMessage = array(
+		  "^(\d+) FOR $currencyPattern(\d+)" => array('message'=>'US$<%price%>可購<%qty%>件','case'=>'pattern1'), 
+		  "^BUY (\d+) FOR $currencyPattern(\d+)" => array('message'=>'HK$<%price%> 可買<%qty%>件','case'=>'pattern1'),
+	      "^BUY (\d+) SAVE $currencyPattern(\d+)" => array('message'=>'購買<%qty%>件 即時節省HK$<%price%>','case'=>'pattern1'),	  
+		  
+		  "^$currencyPattern(\d+) EACH WHEN YOU BUY (\d+)$" => array('message'=>'"購買<%qty%>件 每件HK$<%price%>','case'=>'pattern2'),
+		  //"^$currencyPattern(\d+) EACH WHEN YOU BUY (\d+) BOTTLES$" => array('message'=>'购买<%qty%>瓶每件<%price%>美元','case'=>'pattern2'),
+		  
+		  "^BUY (\d+) GET (\d+) FREE$" => array('message'=>'買<%qty%>送<%offer%>','case'=>'pattern3'),
+		  "^BUY (\d+) FOR THE PRICE OF (\d+)" => array('message'=>'買<%offer%>得<%qty%>','case'=>'pattern3'),	  
+		  
+		  "^SAVE $currencyPattern(\d+)" => array('message'=>'即時獲減US$<%price%>','case'=>'pattern4'),
+		  //"^GET $currencyPattern(\d+) OFF" => array('message'=>'可享<%price%>美元优惠','case'=>'pattern4'),
+		  
+		  //"^GET (\d+)% OFF" => array('message'=>'获享<%percentage%>折优惠','case'=>'pattern5'),
+		  "^SAVE (\d+)%" => array('message'=>'獲享<%percentage%>折優惠','case'=>'pattern5'),
+		  
+		  "^BUY (\d+) SAVE (\d+)%" => array('message'=>'購買<%qty%>件 可獲享<%percentage%>折優惠','case'=>'pattern6'),
+		);
+
+    La Samaritaine
+Sydney Galleria
+Cairns Galleria
+City Of Dreams
+Four Seasons
+Studio City
+580
+582
+Wynn Palace
+
+
+{ status: false,                                                                                                                                              data: ',"ErrorMsg":"TRANS_4272A621-8298-4030-8B85-3606BD836AF7: ERR_ITEM_NOT_FOUND - Item not found. Item number = 4437919"}' } 
+
+// Insert new service
+    const response = await models.Service.createService(dataObj);
+    dataObj.serviceId = response.data.dataValues.id
+    dataObj.orderId = response.data.dataValues.orderId
+    // Here need to call one function
+    // Here Need to call TPCS if DRAFT STATUS == False
+    if (dataObj.draftStatus === false) {
+      const resTpcs = await models.Service.createTpcs(dataObj);
+      console.log('resTpcs -> ',resTpcs)
+      dataObj.posStatus = resTpcs.status;
+      if (resTpcs.status === true) {
+        // eslint-disable-next-line operator-linebreak
+        dataObj.posEventId =
+          resTpcs.data.footer.posEventId != null
+            ? resTpcs.data.footer.posEventId
+            : null;
+      }
+      models.Service.updateTpcsOrderInfo(dataObj)
+    }
