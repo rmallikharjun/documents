@@ -112,3 +112,30 @@ Wynn Palace
       }
       models.Service.updateTpcsOrderInfo(dataObj)
     }
+
+  /** TPCS Status update */
+  Service.updateTpcsOrderInfo = async (serviceData,serviceId, status) => {
+    try {
+      const result = await sequelize.transaction(async (t) => {
+        // Find the dataa is available or not
+        const findService = await Service.findOne(
+          {
+            where: {
+              id: serviceData.serviceId,
+            },
+          },
+          { transaction: t }
+        );
+        if (!findService) {
+          throw Error(`Service is not updated. id: ${serviceData.serviceId}`);
+        }
+        findService.posStatus = serviceData.posStatus;
+        findService.posEventId = serviceData.posEventId;
+        await findService.save({ transaction: t });
+        return findService.dataValues;
+      });
+      return { status: true, data: result };
+    } catch (e) {
+      return { status: false, data: e };
+    }
+  };
